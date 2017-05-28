@@ -61,7 +61,7 @@
                     <Label.FormattedText>
                         <FormattedString>
                             <FormattedString.Spans>
-                                <Span Text="This app retrieves items from an RSS feed and displays them in a list." />
+                                <Span Text="This app retrieves items from an RSS feed and displays them in a list. The user can change the RSS url." />
                             </FormattedString.Spans>
                         </FormattedString>
                     </Label.FormattedText>
