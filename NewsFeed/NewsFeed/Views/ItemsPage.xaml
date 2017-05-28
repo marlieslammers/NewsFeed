@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="NewsFeed.Views.ItemsPage"
+              Title="{Binding Title}"
+             x:Name="BrowseItemsPage">
+  <ContentPage.ToolbarItems>
+  	<ToolbarItem Text="Change Feed" Clicked="ChangeFeed_Clicked" />
+  </ContentPage.ToolbarItems>
+  <ContentPage.Content>
+        <StackLayout>
+            <ListView x:Name="ItemsListView"
+				ItemsSource="{Binding Items}"
+                VerticalOptions="FillAndExpand"
+                HasUnevenRows="true"
+                RefreshCommand="{Binding LoadItemsCommand}"
+                IsPullToRefreshEnabled="true"
+                IsRefreshing="{Binding IsBusy, Mode=OneWay}"
+                CachingStrategy="RecycleElement"
+				ItemSelected="OnItemSelected">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Orientation="Horizontal" 
+                             Margin="0, 2, 0, 2">
+                                <Image Source="{Binding EncloseUrl}" 
+                           WidthRequest="70" 
+                           HeightRequest="70" />
+                                <StackLayout Orientation="Vertical" 
+                                 Margin="0, 5, 10, 5">
+                                    <Label Text="{Binding Title}" 
+                               LineBreakMode="WordWrap" 
+                               FontSize="Medium"  
+                               Style="{DynamicResource ListItemTextStyle}" />
+                                    <StackLayout Orientation="Horizontal" 
+                                         VerticalOptions="EndAndExpand">
+                                        <Label Text="{Binding Age}" 
+                                               Style="{DynamicResource ListItemDetailTextStyle}" 
+                                               FontSize="Small" 
+                                               VerticalOptions="EndAndExpand" 
+                                               HorizontalOptions="Start" />
+                                        <Label Text="{Binding PubDate, StringFormat='{0:hh:mm dd-MM-yyyy}'}" 
+                                               Style="{DynamicResource ListItemDetailTextStyle}" 
+                                               FontSize="Micro" 
+                                               VerticalOptions="EndAndExpand" 
+                                               HorizontalOptions="EndAndExpand" />
+                                    </StackLayout>
+                                </StackLayout>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

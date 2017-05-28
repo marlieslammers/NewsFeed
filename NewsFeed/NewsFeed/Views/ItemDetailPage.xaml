@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="NewsFeed.Views.ItemDetailPage"
+             Title="{Binding Title}">
+    <StackLayout Spacing="20" Padding="15">
+        <Label Text="{Binding Item.Title}" FontSize="Medium"/>
+        <Label Text="{Binding Item.PubDate}" FontSize="Micro"/>
+        <Label Text="{Binding Item.Description}" FontSize="Small"/>
+        <Image Source="{Binding Item.EncloseUrl}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Aspect="AspectFill"/>
+        <Button Margin="0,10,0,0"
+                Text="Read more" 
+                Command="{Binding OpenWebCommand}"
+                BackgroundColor="{StaticResource Primary}"
+                TextColor="White"/>
+    </StackLayout>
+</ContentPage>
